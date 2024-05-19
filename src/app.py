@@ -12,16 +12,16 @@ def startup_event():
     print('Initial model API')
     
     global matrix_fact
-    global data_user_id
+    global data_items_known
 
     # load model from disk
     model_file  = 'tool/matrix_factorization_model_0v1.sav'
     matrix_fact = pickle.load(open(model_file, 'rb'))
 
     
-    # load data from disk
-    data_file = 'models/data_test_load_model.sav'
-    data_user_id= pickle.load(open(data_file, 'rb'))
+    # load ratings.csv from disk
+    data_file = 'models/data_items_known.sav'
+    data_items_known = pickle.load(open(data_file, 'rb'))
 
     print('Load model completed')
 
@@ -31,20 +31,22 @@ async def recommendations(req: Request, res: Response,
                          returnMetadata: bool = False ):
     
     global matrix_fact
-    global data_user_id
+    global data_items_known
 
     item_id_dict = []
 
     #recommend for user_id
-    if user_id > 0:
-        items_known = data_user_id.query("user_id == @user_id")["item_id"]
+    if user_id >= data_items_known["user_id"].min() and user_id <= data_items_known["user_id"].max():
+        items_known = data_items_known.query("user_id == @user_id")["item_id"]
         matrix_fact_data = matrix_fact.recommend(user=user_id, items_known=items_known)
 
         #setting for return
         matrix_fact_data_item_id = matrix_fact_data[["item_id"]].rename(columns={"item_id":"id"})
         item_id_dict = matrix_fact_data_item_id.astype(int).astype(str).to_dict('records')
+    else:
+        return {"status": "fail,not have user_id"}
 
-    if returnMetadata and (user_id > 0):
+    if returnMetadata:
         return{"items": "full"}
     
     elif (user_id > 0):
