@@ -17,20 +17,20 @@ def startup_event():
     global data_ratings
 
     # load model from disk
-    model_file  = 'tool/matrix_factorization_model_0v1.sav'
+    model_file  = '../models/matrix_factorization_model_0v1.sav'
     matrix_fact = pickle.load(open(model_file, 'rb'))
 
     
     # load ratings.csv from disk
-    data_file = 'models/data_items_known.sav'
+    data_file = '../models/data_items_known.sav'
     data_items_known = pickle.load(open(data_file, 'rb'))
 
      # load movies.csv from disk
-    movies_file = 'database/movies.csv'
+    movies_file = '../database/movies.csv'
     data_movies = pd.read_csv(movies_file)
 
     # load ratings.csv from disk
-    ratings_file = 'database/ratings.csv'
+    ratings_file = '../database/ratings.csv'
     data_ratings = pd.read_csv(ratings_file)
 
 
@@ -84,5 +84,5 @@ async def features(req: Request, res: Response,
     
         return {"features": {"histories": histories}}
      
-if __name__ == "__main__":
-    uvicorn.run("app:app", port=5000, log_level="info")
+# if __name__ == "__main__":
+#     uvicorn.run("app:app", port=5000, log_level="info")
