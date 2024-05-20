@@ -14,6 +14,7 @@ def startup_event():
     global matrix_fact
     global data_items_known
     global data_movies
+    global data_ratings
 
     # load model from disk
     model_file  = 'tool/matrix_factorization_model_0v1.sav'
@@ -24,9 +25,14 @@ def startup_event():
     data_file = 'models/data_items_known.sav'
     data_items_known = pickle.load(open(data_file, 'rb'))
 
-     # load ratings.csv from disk
+     # load movies.csv from disk
     movies_file = 'database/movies.csv'
     data_movies = pd.read_csv(movies_file)
+
+    # load ratings.csv from disk
+    ratings_file = 'database/ratings.csv'
+    data_ratings = pd.read_csv(ratings_file)
+
 
     print('Load model completed')
 
@@ -57,7 +63,7 @@ async def recommendations(req: Request, res: Response,
         df_Metadata["id"] = df_Metadata["id"].astype(int)
         df_Metadata = df_Metadata.astype(str).to_dict('records')
 
-        return{"items": [df_Metadata]}
+        return {"items": [df_Metadata]}
     
     elif (user_id):
          #setting for return
@@ -65,6 +71,18 @@ async def recommendations(req: Request, res: Response,
         item_id_dict = matrix_fact_data_item_id.astype(int).astype(str).to_dict('records')
         
         return {"items":[item_id_dict]}
-            
+    
+
+@app.get("/features", status_code=200)   
+async def features(req: Request, res: Response,
+                    user_id: int ): 
+        
+        global data_ratings
+
+        histories = data_ratings.query("userId == @user_id")["movieId"]
+        histories = histories.to_list()
+    
+        return {"features": {"histories": histories}}
+     
 if __name__ == "__main__":
     uvicorn.run("app:app", port=5000, log_level="info")
