@@ -77,16 +77,17 @@ http://localhost:9000/docs
 
 ## How to feed input and get output
 ### Train test model 
-![image](https://github.com/Sparkle753/API-true-recommend/assets/66368427/c57e9b7f-4b96-44f8-b48b-edb42525655d)
+![image](https://github.com/Sparkle753/API-true-recommend/assets/66368427/57005a26-9ae7-4e7a-becb-d6bacdbd66c4)
 
   We can prepare the data by using the train-test split algorithm.(80:20)
 
-![image](https://github.com/Sparkle753/API-true-recommend/assets/66368427/100b7e81-e337-49a7-bc33-a98efaeae643)
+![image](https://github.com/Sparkle753/API-true-recommend/assets/66368427/1102936d-c865-4406-a2d8-f94514df9677)
 
 
   From the data, we can train the model and test it as shown in this box diagram. 
 
-![image](https://github.com/Sparkle753/API-true-recommend/assets/66368427/0a243da6-7496-4567-ab12-f499110f03ea)
+![image](https://github.com/Sparkle753/API-true-recommend/assets/66368427/4841a50a-9416-475f-82da-0e7d7910aab3)
+
 
   Finally, test the model performance using Root Mean Square Error (RMSE) and Mean Absolute Error (MAE). If the values are close to 0, the model will be better.
 
