@@ -1,6 +1,8 @@
 # API-true-recommend
 # Run on command line
 ## Load library
+Requirement python version 3.11
+
 ```
 pip install -r requirements.txt
 ```
