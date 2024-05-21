@@ -3,8 +3,6 @@ import uvicorn
 import pickle
 import pandas as pd
 app = FastAPI()
-wedo_model_ocr = None
-
 
 @app.on_event("startup")
 def startup_event():
@@ -21,13 +19,13 @@ def startup_event():
     matrix_fact = pickle.load(open(model_file, 'rb'))
 
     
-    # load ratings.csv from disk
+    # load data_items_known.sav from disk
     data_file = '../models/data_items_known.sav'
     data_items_known = pickle.load(open(data_file, 'rb'))
 
      # load movies.csv from disk
     movies_file = '../database/movies.csv'
-    data_movies = pd.read_csv(movies_file)
+    data_movies = pd.read_csv(movies_file).rename(columns={"movieId":"item_id"})
 
     # load ratings.csv from disk
     ratings_file = '../database/ratings.csv'
@@ -56,7 +54,9 @@ async def recommendations(req: Request, res: Response,
         return {"status": "fail, not have user_id"}
 
     if returnMetadata:
-        df_Metadata= matrix_fact_data.join(data_movies,on='item_id')
+
+        
+        df_Metadata= matrix_fact_data.merge(data_movies,on='item_id')
         df_Metadata = df_Metadata[["item_id","title","genres"]]
         df_Metadata = df_Metadata.rename(columns={"item_id":"id"})
         df_Metadata['genres'] = df_Metadata['genres'].str.split('|')
@@ -84,5 +84,5 @@ async def features(req: Request, res: Response,
     
         return {"features": {"histories": histories}}
      
-# if __name__ == "__main__":
-#     uvicorn.run("app:app", port=5000, log_level="info")
+if __name__ == "__main__":
+    uvicorn.run("app:app", port=9000, log_level="info")
