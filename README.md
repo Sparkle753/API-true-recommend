@@ -30,9 +30,9 @@
   To input data, set the user_id and movieId for the watched movies. Feed this data to the model, and you will receive predicted rating scores
   
 ## How to improve in the future
-  -Use global libraries or custom libraries to avoid bugs or unsupported libraries.
-  -Update the API to train data for existing users watching new movies or for new users.
-  -Set up an automatic training pipeline.
-  -Integrate with other recommendation algorithms to provide a hybrid recommendation system.
+  - Use global libraries or custom libraries to avoid bugs or unsupported libraries.
+  - Update the API to train data for existing users watching new movies or for new users.
+  - Set up an automatic training pipeline.
+  - Integrate with other recommendation algorithms to provide a hybrid recommendation system.
   
 
