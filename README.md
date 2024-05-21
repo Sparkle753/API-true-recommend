@@ -44,6 +44,12 @@ ipconfig
 ```
 
 
+# Read API Docs
+```
+http://localhost:9000/docs
+```
+
+
 ## How does it work
   This API app uses the Matrix Factorization algorithm. This algorithm is used by Netflix to recommend movies.To know how it work we need to know ratings table on movies data base.
 
