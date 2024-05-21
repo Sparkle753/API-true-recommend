@@ -74,7 +74,21 @@ http://localhost:9000/docs
 
 
 ## How to feed input and get output
+### Train test model 
+![image](https://github.com/Sparkle753/API-true-recommend/assets/66368427/c57e9b7f-4b96-44f8-b48b-edb42525655d)
 
+  We can prepare the data by using the train-test split algorithm.(80:20)
+
+![image](https://github.com/Sparkle753/API-true-recommend/assets/66368427/100b7e81-e337-49a7-bc33-a98efaeae643)
+
+
+  From the data, we can train the model and test it as shown in this box diagram. 
+
+![image](https://github.com/Sparkle753/API-true-recommend/assets/66368427/0a243da6-7496-4567-ab12-f499110f03ea)
+
+  Finally, test the model performance using Root Mean Square Error (RMSE) and Mean Absolute Error (MAE). If the values are close to 0, the model will be better.
+
+### Using model
 ![image](https://github.com/Sparkle753/API-true-recommend/assets/66368427/3a06fd12-88d3-4c0f-aaf4-f54a84d6fc6f)
 
   To input data, set the user_id and movieId for the watched movies. Feed this data to the model, and you will receive predicted rating scores
