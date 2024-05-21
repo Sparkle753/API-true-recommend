@@ -31,7 +31,7 @@ python test_app.py
 
 # Run on docker
 
-## Run docker c
+## Run docker
 ```
 docker build -t true-api .
 docker run -p 9000:9000 true-api
