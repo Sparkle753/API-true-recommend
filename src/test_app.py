@@ -1,7 +1,11 @@
 import pytest
 from fastapi.testclient import TestClient
-from app import app
+from app import app, startup_event
+
 client = TestClient(app)
+
+# Mock the startup event to load the model and data
+startup_event()
 
 # Test the /recommendations endpoint
 def test_recommendations_success():
