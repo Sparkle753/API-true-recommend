@@ -92,7 +92,27 @@ http://localhost:9000/docs
 ![image](https://github.com/Sparkle753/API-true-recommend/assets/66368427/3a06fd12-88d3-4c0f-aaf4-f54a84d6fc6f)
 
   To input data, set the user_id and movieId for the watched movies. Feed this data to the model, and you will receive predicted rating scores
-  
+
+### API response examples
+#### input /recommendations?user_id=20
+![image](https://github.com/Sparkle753/API-true-recommend/assets/66368427/db6364f9-a9a6-4c1f-bf12-8021d2e835fb)
+
+#### out /recommendations?user_id=20
+![image](https://github.com/Sparkle753/API-true-recommend/assets/66368427/0cde4cc0-9dae-4497-86b6-baf55f8d71ed)
+
+#### input /recommendations?user_id=20&returnMetadata=true
+![image](https://github.com/Sparkle753/API-true-recommend/assets/66368427/d1c80c5f-082b-4926-b98c-ef755a52cdef)
+
+#### out /recommendations?user_id=20&returnMetadata=true
+![image](https://github.com/Sparkle753/API-true-recommend/assets/66368427/d2ee52c7-034b-4681-8261-14fba3f655a9)
+
+#### input /features?user_id=50
+![image](https://github.com/Sparkle753/API-true-recommend/assets/66368427/003fb126-7b00-4ac5-aa6a-fec76315e914)
+
+#### out /features?user_id=50
+![image](https://github.com/Sparkle753/API-true-recommend/assets/66368427/b5f59fd2-0b55-4f32-b529-9da33643c129)
+
+
 ## How to improve in the future
   - Use global libraries or custom libraries to avoid bugs or unsupported libraries.
   - Update the API to train data for existing users watching new movies or for new users.
