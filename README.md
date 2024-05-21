@@ -1,4 +1,48 @@
 # API-true-recommend
+# Run on command line
+## Load library
+```
+pip install -r requirements.txt
+```
+
+## Train model and save model
+
+```
+python tool\train_model_true_dataset.py   
+```
+
+## Run model for testting
+```
+run_model_true_dataset.py
+```
+## Run API
+
+```
+cd src
+python app.py
+```
+
+## Run test API
+
+```
+cd src
+python test_app.py
+```
+
+# Run on docker
+
+## Run docker c
+```
+docker build -t true-api .
+docker run -p 9000:9000 true-api
+```
+
+
+## Check IP API
+```
+ipconfig
+```
+
 
 ## How does it work
   This API app uses the Matrix Factorization algorithm. This algorithm is used by Netflix to recommend movies.To know how it work we need to know ratings table on movies data base.
