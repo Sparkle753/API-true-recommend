@@ -15,7 +15,7 @@ python tool\train_model_true_dataset.py
 
 ## Run model for testting
 ```
-run_model_true_dataset.py
+python tool\run_model_true_dataset.py
 ```
 ## Run API
 
